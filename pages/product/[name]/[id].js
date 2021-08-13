@@ -6,6 +6,7 @@ const Detail = () => {
   const {query} = useRouter()
   useEffect(() => {
     console.log(query);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
