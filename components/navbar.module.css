@@ -1,0 +1,15 @@
+.wrapper{
+  background-color: salmon;
+  color: black;
+  height: 50px;
+  line-height: 50px;
+}
+.flex{
+  display: flex;
+  justify-content: flex-end;
+  margin: 0;
+}
+.flex li{
+  margin-right: 20px;
+  list-style: none;
+}
