@@ -1,13 +1,17 @@
-import { getProduct } from "../../models/product";
+// import { getProduct } from "../../models/product";
 
-const Product = ({ products}) => {
-  const dataProduct = JSON.parse(products)
+import axios from "axios";
+import Router from "next/router"
+
+const Product = ({ products }) => {
+  // const dataProduct = JSON.parse(products)
+  // const router = useRouter()
   return (
     <div>
       {/* <p>{JSON.stringify(products)}</p> */}
       <ul>
-        {dataProduct.map((item)=>
-        <li key={item.id}>{item.name}</li>
+        {products.map((item) =>
+          <li key={item.id}>{item.name}</li>
         )}
         <li></li>
       </ul>
@@ -15,16 +19,16 @@ const Product = ({ products}) => {
     </div>
   );
 }
-export const getServerSideProps = async () => {
-  // const { data } = await axios.get('https://jsonplaceholder.typicode.com/posts')
-  const products = await getProduct()
-  // console.log(products);
-  return {
-    props: {
-      products: JSON.stringify(products)
-    }
-  }
-}
+// export const getServerSideProps = async () => {
+//   // const { data } = await axios.get('https://jsonplaceholder.typicode.com/posts')
+//   const products = await getProduct()
+//   // console.log(products);
+//   return {
+//     props: {
+//       products: JSON.stringify(products)
+//     }
+//   }
+// }
 
 // Post.getInitialProps = async () => {
 //   // const { data } = await axios.get('https://jsonplaceholder.typicode.com/posts')
@@ -33,5 +37,36 @@ export const getServerSideProps = async () => {
 //     products: JSON.stringify(products)
 //   }
 // }
+Product.getInitialProps = async (context) => {
+  try {
+    let cookie = ''
+    if(context.req){
+      cookie = context.req.headers.cookie
+    }
+    const result = await axios.get('http://localhost:4000/v1/products/',
+    {withCredentials: true,
+    headers:{
+      cookie: cookie
+    }
+    })
+    const products = result.data.data
+    console.log(products);
+    return {
+      products: products
+    }
+  } catch (error) {
+    console.log(error);
+    if(!context.req){
+      Router.push('/login')
+    }
+
+    if(context.req){
+      context.res.writeHead(301, {
+        Location: 'http://localhost:3000/login'
+      })
+      context.res.end()
+    }
+  }
+}
 
 export default Product;
