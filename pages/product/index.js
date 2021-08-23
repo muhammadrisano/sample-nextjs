@@ -56,10 +56,11 @@ Product.getInitialProps = async (context) => {
     }
   } catch (error) {
     console.log(error);
+    // cek 
     if(!context.req){
       Router.push('/login')
     }
-
+    // context.req -> untuk cek diserver kah
     if(context.req){
       context.res.writeHead(301, {
         Location: 'http://localhost:3000/login'
