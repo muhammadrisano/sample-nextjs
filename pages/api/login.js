@@ -1,11 +1,12 @@
 import axios from 'axios';
 import cookie from 'cookie'
 export default function handler(req, res) {
-  if (req.method === 'GET') {
+  if (req.method === 'POST') {
     const {email, password} = req.body
+    console.log(req.body);
     axios.post('https://risano-eco.herokuapp.com/v1/users/login', {email, password})
-    .then((res)=>{
-      const result = res.data.data
+    .then((response)=>{
+      const result = response.data.data
       res.setHeader("Access-Control-Allow-Headers", "https://sample-nextjs-coral.vercel.app/");
       res.setHeader('Access-Control-Allow-Credentials', true);
       res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
