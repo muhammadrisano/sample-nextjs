@@ -6,7 +6,7 @@ export default function handler(req, res) {
   res.setHeader('Set-Cookie', cookie.serialize('token', 'blbabalbsb', {
     httpOnly: true,
     secure: true,
-    sameSite: 'strict',
+    sameSite: 'none',
     maxAge: 1000*60*60,
     path: '/',
   }))
