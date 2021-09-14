@@ -12,7 +12,7 @@ export default function Home() {
     <div className={styles.container}>
       <h1>website saya</h1>
       {/* <Image src="/db.png" alt="db" width="400px" height="400px" /> */}
-      <button onClick= {()=> router.push('/product')}>pindah ke post</button>
+      <button onClick= {()=> router.push('/auth/login')}>pindah ke post</button>
     </div>
     </Layout>
   )

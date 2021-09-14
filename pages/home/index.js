@@ -1,6 +1,7 @@
 import { useEffect} from 'react'
 import Layout from '../../components/Layout'
 import { useRouter } from 'next/router'
+import withPrivateRoute from '../../HOC/withPrivateRoute'
 
 function Home() {
   const router = useRouter()
@@ -19,4 +20,4 @@ function Home() {
   )
 }
 
-export default Home
+export default withPrivateRoute(Home)
