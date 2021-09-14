@@ -15,6 +15,16 @@ const Login = () => {
       alert('password salah')
     })
   }
+  const handleCoba = () =>{
+    axios.post(`http://localhost:3000/api/coba`, { testing: 'hello' }, { withCredentials: true })
+      .then(() => {
+        console.log('berhasil mencoba');
+      })
+      .catch(() => {
+        console.log('gagal mencoba')
+      })
+  }
+
   return (
     <div>
       <h1>halaman login</h1>
@@ -23,6 +33,7 @@ const Login = () => {
         <li><input type="text" name="password" id="password" placeholder="password" value={password} onChange={(e)=>setPassword(e.target.value)}/></li>
       </ul>
       <button onClick={handleLogin}>Login</button>
+      <button onClick={handleCoba}>coba</button>
     </div>
   );
 }
