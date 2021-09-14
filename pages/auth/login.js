@@ -16,7 +16,7 @@ const Login = () => {
     })
   }
   const handleCoba = () =>{
-    axios.post(`http://localhost:3000/api/coba`, { testing: 'hello' }, { withCredentials: true })
+    axios.post(`https://sample-nextjs-coral.vercel.app/api/coba`, { testing: 'hello' }, { withCredentials: true })
       .then(() => {
         console.log('berhasil mencoba');
       })
