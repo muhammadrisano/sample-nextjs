@@ -7,7 +7,7 @@ const Login = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const handleLogin = ()=>{
-    axios.post(`https://risano-eco.herokuapp.com/v1/users/login`, {email, password},{withCredentials: true})
+    axios.post(`https://sample-nextjs-coral.vercel.app/api/login`, {email, password},{withCredentials: true})
     .then(()=>{
       router.push('/product')
     })
