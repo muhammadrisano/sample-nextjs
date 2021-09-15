@@ -3,7 +3,7 @@ import cookie from 'cookie'
 const login = (req, res)=>{
   if(req.method === 'POST'){
     const {email, password} = req.body
-    axios.get('https://risano-eco.herokuapp.com/v1/users/login', {email, password})
+    axios.post('https://risano-eco.herokuapp.com/v1/users/login', {email, password})
     .then((response)=>{
       const result = response.data.data
       res.setHeader("Access-Control-Allow-Headers", "*")
