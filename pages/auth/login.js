@@ -7,7 +7,7 @@ const Login = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const handleLogin = ()=>{
-    axios.post(`https://sample-nextjs-coral.vercel.app/api/login`, {email, password},{withCredentials: true})
+    axios.post(`https://risano-eco.herokuapp.com/api/login`, {email, password},{withCredentials: true})
     .then(()=>{
       router.push('/product')
     })
@@ -15,15 +15,7 @@ const Login = () => {
       alert('password salah')
     })
   }
-  const handleCoba = () =>{
-    axios.post(`https://sample-nextjs-coral.vercel.app/api/login`, { testing: 'hello' }, { withCredentials: true })
-      .then(() => {
-        console.log('berhasil mencoba');
-      })
-      .catch(() => {
-        console.log('gagal mencoba')
-      })
-  }
+
 
   return (
     <div>
@@ -33,7 +25,6 @@ const Login = () => {
         <li><input type="text" name="password" id="password" placeholder="password" value={password} onChange={(e)=>setPassword(e.target.value)}/></li>
       </ul>
       <button onClick={handleLogin}>Login</button>
-      <button onClick={handleCoba}>coba</button>
     </div>
   );
 }
