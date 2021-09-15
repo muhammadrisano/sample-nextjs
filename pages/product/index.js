@@ -22,13 +22,22 @@ const Product = ({ products }) => {
 
     // }
   }, [])
+  const handleDelete =(id)=>{
+    axios.delete(`${process.env.NEXT_PUBLIC_URL_BACKEND}/v1/products/${id}`, { withCredentials: true })
+    .then((res)=>{
+      alert('success')
+    })
+    .catch((err)=>{
+      alert('gagal')
+    })
+  }
   return (
     <div>
       {/* <p>{JSON.stringify(products)}</p> */}
       <h4>ini cookie : {coba}</h4>
       <ul>
         {products.map((item) =>
-          <li key={item.id}>{item.name}</li>
+          <li key={item.id}>{item.name} | <button onClick={() => handleDelete(item.id)}>hapus</button></li>
         )}
         <li></li>
       </ul>

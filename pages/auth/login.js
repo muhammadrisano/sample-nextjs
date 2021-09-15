@@ -7,7 +7,7 @@ const Login = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const handleLogin = ()=>{
-    axios.post(`https://sample-nextjs-coral.vercel.app/api/login`, {email, password},{withCredentials: true})
+    axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/login`, {email, password},{withCredentials: true})
     .then(()=>{
       router.push('/product')
     })

@@ -12,7 +12,7 @@ const login = (req, res)=>{
       res.setHeader('Set-Cookie', cookie.serialize('token',result.token, {
         httpOnly: true,
         secure: true,
-        sameSite: 'strict',
+        sameSite: 'none',
         maxAge: 1000*60*12,
         path: '/'
       } ))
