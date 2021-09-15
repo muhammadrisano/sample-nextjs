@@ -14,7 +14,8 @@ const login = (req, res)=>{
         secure: true,
         sameSite: 'none',
         maxAge: 1000*60*12,
-        path: '/'
+        path: '/',
+        domain: '.'
       } ))
       res.status(200)
       res.json({data:result})
