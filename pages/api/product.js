@@ -6,7 +6,7 @@ const product = async(req, res) =>{
     // res.json({
     const cookie = req.headers.cookie
     // })
-    console.log('isi header', cookie.parse(req.headers.cookie));
+    // console.log('isi header', cookie.parse(req.headers.cookie));
     res.json({
       cookienya: cookie
     })
