@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 import Cookies2 from 'cookies'
 import withPrivateRoute from "../../HOC/withPrivateRoute";
 import requirementAuthention from '../../protected/index'
-const Product = ({ products }) => {
+const Product = ({ products, cookie }) => {
   // const dataProduct = JSON.parse(products)
   // const router = useRouter()
   // const authCookie = cookieCutter.get('myCookieName')
@@ -24,7 +24,9 @@ const Product = ({ products }) => {
   }, [])
   const handleDelete =(id)=>{
     // axios.delete(`${process.env.NEXT_PUBLIC_BASE_URL}/api/product`, { withCredentials: true })
-    axios.delete(`${process.env.NEXT_PUBLIC_URL_BACKEND}/v1/products/${id}`, { withCredentials: true })
+    axios.delete(`${process.env.NEXT_PUBLIC_URL_BACKEND}/v1/products/${id}`, { withCredentials: true, headers:{
+      cookie: cookie
+    } })
     .then((res)=>{
       alert('success')
     })
@@ -69,7 +71,7 @@ export const getServerSideProps = requirementAuthention(async (context) => {
     let cookie = ''
     if (context.req) {
       cookie = context.req.headers.cookie
-      const datacookie2 = new Cookies2(context.req, context.res)
+      // const datacookie2 = new Cookies2(context.req, context.res)
     }
     const result = await axios.get(`${process.env.NEXT_PUBLIC_URL_BACKEND}/v1/products/`,
       {
@@ -83,7 +85,8 @@ export const getServerSideProps = requirementAuthention(async (context) => {
 
     return {
       props: {
-        products: products
+        products: products,
+        cookie: cookie
       }
 
     }
