@@ -15,15 +15,15 @@ const Product = ({ products }) => {
   const [coba, setCoba] = useState("")
   useEffect(() => {
     // if (document.cookie){
-    Cookies.set('name3', 'testing')
-    console.log(new Date().toString());
+    // Cookies.set('name3', 'testing')
+    // console.log(new Date().toString());
     // setCoba(authCookie)
-    console.log('isi cookie', document.cookie);
+    // console.log('isi cookie', document.cookie);
 
     // }
   }, [])
   const handleDelete =(id)=>{
-    axios.delete(`${process.env.NEXT_PUBLIC_URL_BACKEND}/v1/products/${id}`, { withCredentials: true })
+    axios.delete(`${process.env.NEXT_PUBLIC_BASE_URL}/api/product`, { withCredentials: true })
     .then((res)=>{
       alert('success')
     })
