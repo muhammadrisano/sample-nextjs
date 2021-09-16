@@ -23,7 +23,8 @@ const Product = ({ products }) => {
     // }
   }, [])
   const handleDelete =(id)=>{
-    axios.delete(`${process.env.NEXT_PUBLIC_BASE_URL}/api/product`, { withCredentials: true })
+    // axios.delete(`${process.env.NEXT_PUBLIC_BASE_URL}/api/product`, { withCredentials: true })
+    axios.delete(`${process.env.NEXT_PUBLIC_BASE_URL}/v1/products/${id}`, { withCredentials: true })
     .then((res)=>{
       alert('success')
     })
