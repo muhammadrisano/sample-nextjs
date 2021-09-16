@@ -15,6 +15,7 @@ const login = (req, res)=>{
         sameSite: 'none',
         maxAge: 1000*60*12,
         path: '/',
+        domain: '.fwebdev.xyz',
       } ))
       res.status(200)
       res.json({data:result})
